@@ -6,7 +6,27 @@ import FooterLogo from 'assets/logo.svg';
 
 export default function Footer() {
   return (
-    <h1>Footer</h1>
+    <footer sx={styles.footer}>
+      <Container>
+        <Box sx="styles.footer.footerBottomArea">
+          <Link path="/">
+            <Image src={FooterLogo} alt="Logo" />
+          </Link>
+          <Box sx={styles.footer.menus}>
+            <nav>
+              {data.menuItem.map((item, index) => (
+                <Link
+                  path={item.path}
+                  key={index}
+                  label={item.label}
+                  sx={styles.footer.link}
+                />
+              ))}
+            </nav>
+          </Box>
+        </Box>
+      </Container>
+    </footer>
   );
 }
 
