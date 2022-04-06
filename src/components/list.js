@@ -3,7 +3,29 @@ import { Flex, Box, IconButton } from 'theme-ui';
 
 export default function List({ items = [], parentStyle, childStyle }) {
   return (
-    <h1>List</h1>
+    <Box
+      as="ul"
+      sx={{
+        listStylesType: 'none',
+        margin: 0,
+        paddng: 0,
+        ...parentStyle
+      }}
+    >
+      {items.map((item, index) => (
+        <Flex
+          className={item.isAvailable ? "open" : "closed"}
+          as="li"
+          sx={{ ...childStyle }}
+          key={index}
+        >
+          <IconButton sx={styles.listIcon} area-label="List icon">
+            {item.icon}
+          </IconButton>
+          {item.text}
+        </Flex>
+      ))}
+    </Box>
   );
 }
 
